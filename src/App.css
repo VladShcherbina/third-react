@@ -31,7 +31,14 @@
   text-decoration: line-through;
 }
 
-
+.delete {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
 
 
 

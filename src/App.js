@@ -12,15 +12,21 @@ function App() {
     }
   }
 
+  
+
   const toggleTodo =(id) => {
     setTodos(todos.map(todo => {
       if(todo.id !== id) return todo;
 
       return {
         ...todo,
-        done: !todo.done
+        done: !todo.done,
       }
     }))
+  }
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
   }
 
   return (
@@ -30,10 +36,21 @@ function App() {
           <h1 className='title'>TodoList</h1>
           <Form putTodo={putTodo}/>
           <ul className='todos'>
-            {todos.map((todo) => {
+            {todos.sort((a, b)=> {
+              if (a.done === b.done) {
+                return 0
+              } else if (a.done) {
+                return 1
+              } else {
+                return -1}
+            }).map((todo) => {
               return (
-                <li className={todo.done ? 'todo done' : 'todo'} key ={todo.id} onClick={() => toggleTodo(todo.id)}>
+                <li className={todo.done ? 'todo done' : 'todo'} key ={todo.id} onClick={() => {toggleTodo(todo.id)}}>
                   {todo.text}
+                  <img src = './delete.png' alt='delete' className='delete' onClick={(e) => {
+                    e.stopPropagation()
+                    removeTodo(todo.id)
+                  }}></img>
                 </li>
               )
             })}
