@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
-import { toggleComplitedTodo, removeTodo } from "../redux/store/todoSlice/todoSlice";
+import { toggleComplitedTodo, removeTodo, sortTodo } from "../redux/store/todoSlice/todoSlice";
 
 function TodoItems({todo}) {
 
     const dispatch = useDispatch()
     const toggleTodoHandler = (id) => {
         dispatch(toggleComplitedTodo(id))
+        dispatch(sortTodo(id))
+
     }
     return (
       <div>

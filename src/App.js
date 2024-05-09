@@ -20,3 +20,12 @@ function App() {
 }
 
 export default App;
+
+// .sort((a, b)=> {
+//   if (a.done === b.done) {
+//     return 0
+//   } else if (a.done) {
+//     return 1
+//   } else {
+//     return -1}
+// })

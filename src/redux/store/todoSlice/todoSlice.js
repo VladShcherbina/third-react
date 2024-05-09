@@ -17,9 +17,21 @@ export const todoSlice = createSlice({
         toggleComplitedTodo: (state, action) => {
             const toggleTodo = state.todos.find((todo) => todo.id === action.payload)
             toggleTodo.completed = !toggleTodo.completed
+        },
+        sortTodo: (state) => {
+             state.todos.sort((a, b) => {
+                  if (a.completed === b.completed) {
+                        return 0
+                    } else if (a.completed) {
+                        return 1
+                    } else {
+                        return -1}
+            })
         }
     }
 })
 
-export const { addTodo, removeTodo, toggleComplitedTodo } = todoSlice.actions
+export const { addTodo, removeTodo, toggleComplitedTodo, sortTodo } = todoSlice.actions
 export default todoSlice.reducer
+
+
