@@ -3,12 +3,8 @@ import Form from './components/Form';
 import TodoItems from './components/TodoItems';
 import { useSelector } from 'react-redux';
 
-
-
 function App() {
   const todos = useSelector((state) => state.todo.todos)
-
-
 
   return (
     <div className="App">
@@ -16,10 +12,7 @@ function App() {
         <div className='container'>
           <h1 className='title'>TodoList</h1>
           <Form />
-          {
-            todos?.map(todo => (
-              <TodoItems key ={todo.id} todo={todo} />))
-          }
+          {todos?.map(todo => (<TodoItems key ={todo.id} todo={todo} />))}
         </div>
       </div>
     </div>
@@ -27,12 +20,3 @@ function App() {
 }
 
 export default App;
-
-// .sort((a, b)=> {
-//   if (a.done === b.done) {
-//     return 0
-//   } else if (a.done) {
-//     return 1
-//   } else {
-//     return -1}
-// })

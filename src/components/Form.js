@@ -4,27 +4,18 @@ import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/store/todoSlice/todoSlice';
 import { v4 } from 'uuid';
 
-
-
 function Form() {
-
     const dispatch = useDispatch()
     const [value, setValue] = useState('')
-
     const addTodoHandler = () => {
       const todo = {
         id: v4(),
         text: value,
         completed: false
       }
-
       dispatch(addTodo(todo))
       setValue('')
     }
-
-
-    
-
 
     return (
       <div>
@@ -36,7 +27,6 @@ function Form() {
                 placeholder='New Todo' 
                 type='text'
                 value={value} />
-            
         </form>
       </div>
     );
