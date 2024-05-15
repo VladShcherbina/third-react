@@ -18,23 +18,6 @@ export const fetchTodos = createAsyncThunk(
         }  
 )
 
-export const addTodoAsync = createAsyncThunk(
-    'todos/addTodoAsync',
-    async (payload) => {
-      const resp = await fetch(URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title: payload.text, completed: false }),
-      });
-  
-      if (resp.ok) {
-          const todo = await resp.json();
-          return { todo };
-      }
-      }
-  );
 
 export const todoSlice = createSlice({
     name: 'todos',
@@ -66,10 +49,6 @@ export const todoSlice = createSlice({
             .addCase(fetchTodos.fulfilled, (state, action) => {
                 state.todos = action.payload;
             })
-            .addCase(addTodoAsync.fulfilled, (state, action) => {
-                console.log('action.payload.todo: ', action.payload.todo);
-                state.todos.push(action.payload.todo);
-              })
     }
 })
 
