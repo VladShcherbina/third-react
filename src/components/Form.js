@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addTodo } from '../redux/store/todoSlice/todoSlice';
 import { v4 } from 'uuid';
 
+
+
 function Form() {
     const dispatch = useDispatch()
     const [value, setValue] = useState('')
@@ -18,15 +20,16 @@ function Form() {
     }
 
     return (
-      <div>
-        <form className='form' onSubmit={e => {
-          e.preventDefault()
-          addTodoHandler()
-        }}>
-             <input className='input' onChange={(e) => {setValue(e.target.value)}} 
+      <div >
+        <form className='form' >
+              <input className='input' onChange={(e) => {setValue(e.target.value)}} 
                 placeholder='New Todo' 
                 type='text'
                 value={value} />
+              <button className='addBnt' onClick={e => {
+                e.preventDefault()
+                addTodoHandler()
+                }} type='submit'>Add Todo</button>
         </form>
       </div>
     );

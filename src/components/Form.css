@@ -1,3 +1,7 @@
+.form{
+    display: flex;
+    gap:5px
+}
 .input{
     width: 100%;
     outline:none;
@@ -5,4 +9,9 @@
     padding: 10px;
     font-size: 20px;
     border-radius: 5px;
+}
+.addBnt{
+    border: 2px solid #1bc4b5;
+    width: 100px;
+    cursor: pointer;
 }
