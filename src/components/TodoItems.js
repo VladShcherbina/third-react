@@ -1,32 +1,24 @@
-import { useDispatch} from "react-redux";
-import { toggleComplitedTodo, removeTodo, sortTodo } from "../redux/store/todoSlice/todoSlice";
+import { useEffect} from 'react'
+import { useDispatch, useSelector} from "react-redux";
+import TodoItem from "./TodoItem";
+import { fetchTodos } from "../redux/store/todoSlice/todoSlice"
 
+function TodoItems() {
 
+const dispatch = useDispatch()
+const todos = useSelector(state => state.todo.todos)
 
+useEffect(() => {
+  dispatch(fetchTodos())
+ }, [dispatch])
 
-function TodoItems({todo}) {
+return (
+  <div>
+    <ul className='todos'>
+      {todos.map((todo) => <TodoItem key={todo.id} todo={todo} /> )}
+    </ul>
+  </div>
+  );
+}
 
-    const dispatch = useDispatch()
-    const toggleTodoHandler = (id) => {
-        dispatch(toggleComplitedTodo(id))
-        dispatch(sortTodo(id))
-    }
-
-   
-        
-    return (
-      <div>
-               <ul className='todos'>
-               <li className={todo.completed ? 'todo done' : 'todo'}  onClick={() => toggleTodoHandler(todo.id)}>
-                 {todo.text}
-                 <img src = './delete.png' alt='delete' className='delete' onClick={(e) => {
-                   e.stopPropagation()
-                   dispatch(removeTodo(todo.id))
-                 }}></img>
-               </li>
-           </ul>
-      </div>
-    );
-  }
-  
-  export default TodoItems;
+export default TodoItems;

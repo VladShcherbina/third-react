@@ -1,21 +1,20 @@
 import './Form.css'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/store/todoSlice/todoSlice';
+import { addTodoAsync } from '../redux/store/todoSlice/todoSlice';
 import { v4 } from 'uuid';
-
-
 
 function Form() {
     const dispatch = useDispatch()
     const [value, setValue] = useState('')
+    
     const addTodoHandler = () => {
       const todo = {
         id: v4(),
         text: value,
         completed: false
       }
-      dispatch(addTodo(todo))
+      dispatch(addTodoAsync(todo))
       setValue('')
     }
 

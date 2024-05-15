@@ -1,13 +1,8 @@
 import './App.css';
 import Form from './components/Form';
 import TodoItems from './components/TodoItems';
-import TodoItemsJson from './components/TodoItemsJson';
-import { useSelector } from 'react-redux';
-
-
 
 function App() {
-  const todos = useSelector((state) => state.todo.todos)
 
   return (
     <div className="App">
@@ -15,8 +10,7 @@ function App() {
         <div className='container'>
           <h1 className='title'>TodoList</h1>
           <Form />
-          <TodoItemsJson />
-          {todos.map(todo => (<TodoItems key ={todo.id} todo={todo} />))}
+          <TodoItems />
         </div>
       </div>
     </div>
