@@ -15,7 +15,7 @@ function App() {
         <div className='container'>
           <h1 className='title'>TodoList</h1>
           <Form />
-          {/* <TodoItemsJson /> */}
+          <TodoItemsJson />
           {todos.map(todo => (<TodoItems key ={todo.id} todo={todo} />))}
         </div>
       </div>
